@@ -12,7 +12,7 @@ public class TestFactoresprimos {
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		String resultado = factoresPrimos.descomponerFactoresPrimos(90);
 		
-		Assert.assertEquals("2 3 3 5 ", resultado);
+		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", resultado);
 	}
 	
 	/*Prueba la factorización con el numero 360*/
@@ -22,7 +22,7 @@ public class TestFactoresprimos {
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		String resultado = factoresPrimos.descomponerFactoresPrimos(360);
 		
-		Assert.assertEquals("2 2 2 3 3 5 ", resultado);
+		Assert.assertEquals("Factores primos 360: 2 2 2 3 3 5 ", resultado);
 	}
 	
 	/*Prueba la factorización con el primer divisor*/
@@ -32,7 +32,7 @@ public class TestFactoresprimos {
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		String resultado = factoresPrimos.descomponerFactoresPrimos(2);
 		
-		Assert.assertEquals("2 ", resultado);
+		Assert.assertEquals("Factores primos 2: 2 ", resultado);
 	}
 	
 	/*Prueba la factorización con un numero que no se puede descomponer*/
@@ -42,7 +42,7 @@ public class TestFactoresprimos {
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		String resultado = factoresPrimos.descomponerFactoresPrimos(7);
 		
-		Assert.assertEquals("7 ", resultado);
+		Assert.assertEquals("Factores primos 7: 7 ", resultado);
 	}
 
 }

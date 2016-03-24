@@ -26,6 +26,6 @@ public class FactoresPrimos {
 			resultado = Integer.toString(numeroOriginal) + " ";
 		}
 		
-		return resultado;
+		return "Factores primos " + numeroOriginal + ": " + resultado;
 	} 
 }
