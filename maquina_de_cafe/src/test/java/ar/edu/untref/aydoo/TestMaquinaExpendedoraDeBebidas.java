@@ -8,7 +8,17 @@ import org.junit.Test;
 
 
 public class TestMaquinaExpendedoraDeBebidas {
+	
+	@Test
+	public void testVasoVacio() {
+		Vaso unVaso = new Vaso();
 
+		Assert.assertEquals(false, unVaso.getTieneCafe());
+		Assert.assertEquals(false, unVaso.getTieneLeche());
+		Assert.assertEquals(false, unVaso.getTieneAzucar());
+	
+	}
+	
 	@Test
 	public void testPrepararCafeSolo() {
 		Vaso unVaso = new Vaso();
