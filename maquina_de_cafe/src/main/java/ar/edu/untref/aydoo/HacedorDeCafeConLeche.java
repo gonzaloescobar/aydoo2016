@@ -7,7 +7,7 @@ public class HacedorDeCafeConLeche {
 	
 	public Vaso prepararEnEsteVaso(Vaso unVaso) {
 		this.unLechero.prepararEnEsteVaso(unVaso);
-		this.unCafetero.preparaEnEsteVaso(unVaso);
+		this.unCafetero.prepararEnEsteVaso(unVaso);
 		return unVaso;
 	}
 
