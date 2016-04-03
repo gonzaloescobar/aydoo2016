@@ -7,16 +7,16 @@ public class Candidato {
 	public Candidato(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public String getNombre(){
+
+	public String getNombre() {
 		return this.nombre;
 	}
-	
-	public void agregarVoto(){
+
+	public void agregarVoto() {
 		this.cantidadDeVotosObtenidos++;
 	}
-	
-	public int getCantidadDeVotosObtenidos(){
+
+	public int getCantidadDeVotosObtenidos() {
 		return this.cantidadDeVotosObtenidos;
 	}
 
