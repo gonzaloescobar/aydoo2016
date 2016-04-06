@@ -28,6 +28,30 @@ public class IntegracionTest {
 
 		Assert.assertEquals(3, unCandidato.getCantidadDeVotosObtenidos());
 	}
+	
+	@Test
+	public void partidoConMasVotosPorProvincia() {
+		CentroDeComputos centroDeComputos = new CentroDeComputos();
+		Provincia unaProvincia = new Provincia("Buenos Aires");
+		Partido unPartido = new Partido("FPV");
+		Partido otroPartido = new Partido("FR");
+		Candidato unCandidato = new Candidato("Scioli");
+		Candidato otroCandidato = new Candidato("Massa");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
+		Voto otroVotoMas = new Voto(unCandidato, unaProvincia);
+		Voto otroVoto = new Voto(otroCandidato, unaProvincia);
+
+		unPartido.agregarCandidato(unCandidato);
+		otroPartido.agregarCandidato(otroCandidato);
+		unaProvincia.agregarPartido(unPartido);
+		unaProvincia.agregarPartido(otroPartido);
+		centroDeComputos.agregarProvincia(unaProvincia);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(otroVotoMas);
+		centroDeComputos.votar(otroVoto);
+
+		Assert.assertEquals(unPartido, centroDeComputos.getPartidoConMasVotosPorProvincia(unaProvincia));
+	}
 
 	
 }
