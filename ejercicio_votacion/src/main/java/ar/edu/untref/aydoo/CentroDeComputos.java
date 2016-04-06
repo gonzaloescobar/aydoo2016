@@ -32,17 +32,22 @@ public class CentroDeComputos {
 	}
 
 	public Candidato getCandidatoConMasVotosANivelNacional() {
-		HashMap<Candidato, Integer> resultadoNacional = new HashMap<Candidato, Integer>();
-		Set<Partido> partidos = new HashSet<Partido>();
-		Set<Candidato> candidatos = new HashSet<Candidato>();
+		HashMap<Candidato, Integer> resultadoParcial = new HashMap<Candidato, Integer>();
+		Candidato candidato = null;
 		Candidato candidatoGanador = null;
+		int cantidadDeVotos = 0;
 
 		for (Provincia provinciaActual : provincias) {
-			resultadoNacional = provinciaActual.getCandidatosYSusVotos();
-		}
-		for (Entry<Candidato, Integer> votacion : resultadoNacional.entrySet()) {
-			candidatoGanador = votacion.getKey();
-			int valor = votacion.getValue();
+
+			resultadoParcial = provinciaActual.getCandidatosYSusVotos();
+
+			for (Entry<Candidato, Integer> votacion : resultadoParcial.entrySet()) {
+				candidato = votacion.getKey();
+				if (candidato.getCantidadDeVotosObtenidos() > cantidadDeVotos) {
+					candidatoGanador = candidato;
+				}
+				cantidadDeVotos = candidatoGanador.getCantidadDeVotosObtenidos();
+			}
 		}
 		return candidatoGanador;
 	}

@@ -131,9 +131,17 @@ public class IntegracionTest {
 		centroDeComputos.votar(otroVotoMas);
 		centroDeComputos.votar(unVoto);
 		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
 		centroDeComputos.votar(otroVoto);
-
-		Assert.assertEquals(unCandidato, centroDeComputos.getCandidatoConMasVotosANivelNacional());
+		centroDeComputos.votar(otroVoto);
+	
+		
+		Assert.assertEquals("Scioli", centroDeComputos.getCandidatoConMasVotosANivelNacional().getNombre());
 	}
 
 }
