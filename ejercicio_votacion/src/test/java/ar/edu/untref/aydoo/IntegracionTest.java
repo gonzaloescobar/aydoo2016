@@ -143,5 +143,35 @@ public class IntegracionTest {
 		
 		Assert.assertEquals("Scioli", centroDeComputos.getCandidatoConMasVotosANivelNacional().getNombre());
 	}
+	
+	@Test
+	public void candidatoConMasVotosANivelNacionalConMenosVotosQueElPartidoContrario() {
+		CentroDeComputos centroDeComputos = new CentroDeComputos();
+		Provincia unaProvincia = new Provincia("Buenos Aires");
+		Partido unPartido = new Partido("FPV");
+		Partido otroPartido = new Partido("FR");
+		Candidato unCandidato = new Candidato("Scioli");
+		Candidato otroCandidato = new Candidato("Massa");
+		Candidato otroCandidatoFR = new Candidato("De la Sota");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
+		Voto otroVotoMas = new Voto(otroCandidatoFR, unaProvincia);
+		Voto otroVoto = new Voto(otroCandidato, unaProvincia);
+
+		unPartido.agregarCandidato(unCandidato);
+		otroPartido.agregarCandidato(otroCandidato);
+		otroPartido.agregarCandidato(otroCandidatoFR);
+		unaProvincia.agregarPartido(unPartido);
+		unaProvincia.agregarPartido(otroPartido);
+		centroDeComputos.agregarProvincia(unaProvincia);
+		centroDeComputos.votar(otroVotoMas);
+		centroDeComputos.votar(otroVotoMas);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(unVoto);
+		centroDeComputos.votar(otroVoto);
+		centroDeComputos.votar(otroVoto);
+		
+		Assert.assertEquals("Scioli", centroDeComputos.getCandidatoConMasVotosANivelNacional().getNombre());
+	}
 
 }
