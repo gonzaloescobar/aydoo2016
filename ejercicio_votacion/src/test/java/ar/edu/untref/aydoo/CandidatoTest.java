@@ -16,12 +16,14 @@ public class CandidatoTest {
 
 	@Test
 	public void recibirVotos() {
-		Candidato primerCandidato = new Candidato("Scioli");
+		Candidato scioli = new Candidato("Scioli");
+		Provincia buenosAires = new Provincia("Buenos Aires");
+		Voto unVoto = new Voto(scioli, buenosAires);
 
-		primerCandidato.agregarVoto();
-		primerCandidato.agregarVoto();
+		scioli.agregarVoto(unVoto);
+		scioli.agregarVoto(unVoto);
 
-		Assert.assertEquals(2, primerCandidato.getCantidadDeVotosObtenidos());
+		Assert.assertEquals(2, scioli.getCantidadDeVotosObtenidos());
 	}
 
 	@Test

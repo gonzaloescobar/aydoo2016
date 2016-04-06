@@ -47,4 +47,13 @@ public class Partido {
 		return cantidadTotalDeVotos;
 	}
 
+	public void agregarVoto(Voto unVoto) {
+		for(Candidato candidatoActual : candidatos){
+			if(candidatoActual.equals(unVoto.getCandidato())){
+				candidatoActual.agregarVoto(unVoto);
+			}
+		}
+		
+	}
+
 }

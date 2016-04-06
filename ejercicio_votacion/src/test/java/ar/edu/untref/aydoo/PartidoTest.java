@@ -40,10 +40,12 @@ public class PartidoTest {
 	public void cantidadDeVotosDeUnCandidato() {
 		Partido unPartido = new Partido("FPV");
 		Candidato unCandidato = new Candidato("Scioli");
+		Provincia unaProvincia = new Provincia("Buenos Aires");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
 
-		unCandidato.agregarVoto();
-		unCandidato.agregarVoto();
-		unCandidato.agregarVoto();
+		unCandidato.agregarVoto(unVoto);
+		unCandidato.agregarVoto(unVoto);
+		unCandidato.agregarVoto(unVoto);
 		unPartido.agregarCandidato(unCandidato);
 
 		Assert.assertEquals(3, unPartido.getCantidadDeVotosPorCandidato(unCandidato));
@@ -75,10 +77,13 @@ public class PartidoTest {
 		Partido unPartido = new Partido("Cambiemos");
 		Candidato unCandidato = new Candidato("Macri");
 		Candidato otroCandidato = new Candidato("Carrio");
-
-		unCandidato.agregarVoto();
-		unCandidato.agregarVoto();
-		otroCandidato.agregarVoto();
+		Provincia unaProvincia = new Provincia("Buenos Aires");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
+		Voto otroVoto = new Voto(otroCandidato, unaProvincia);
+		
+		unCandidato.agregarVoto(unVoto);
+		unCandidato.agregarVoto(unVoto);
+		otroCandidato.agregarVoto(otroVoto);
 		unPartido.agregarCandidato(unCandidato);
 		unPartido.agregarCandidato(otroCandidato);
 

@@ -29,8 +29,9 @@ public class ProvinciaTest {
 		Provincia unaProvincia = new Provincia("Buenos Aires");
 		Partido unPartido = new Partido("FPV");
 		Candidato unCandidato = new Candidato("Scioli");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
 
-		unCandidato.agregarVoto();
+		unCandidato.agregarVoto(unVoto);
 		unPartido.agregarCandidato(unCandidato);
 		unaProvincia.agregarPartido(unPartido);
 
@@ -44,8 +45,10 @@ public class ProvinciaTest {
 		Partido otroPartido = new Partido("Frente de Izquierda");
 		Candidato unCandidato = new Candidato("Scioli");
 		Candidato otroCandidato = new Candidato("Del Cano");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
+		
 
-		unCandidato.agregarVoto();
+		unCandidato.agregarVoto(unVoto);
 		unPartido.agregarCandidato(unCandidato);
 		otroPartido.agregarCandidato(otroCandidato);
 		unaProvincia.agregarPartido(unPartido);
@@ -59,9 +62,10 @@ public class ProvinciaTest {
 		Provincia unaProvincia = new Provincia("Buenos Aires");
 		Partido unPartido = new Partido("FPV");
 		Candidato unCandidato = new Candidato("Scioli");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
 
-		unCandidato.agregarVoto();
-		unCandidato.agregarVoto();
+		unCandidato.agregarVoto(unVoto);
+		unCandidato.agregarVoto(unVoto);
 		unPartido.agregarCandidato(unCandidato);
 		unaProvincia.agregarPartido(unPartido);
 
@@ -75,10 +79,12 @@ public class ProvinciaTest {
 		Partido otroPartido = new Partido("Frente de Izquierda");
 		Candidato unCandidato = new Candidato("Scioli");
 		Candidato otroCandidato = new Candidato("Del Cano");
+		Voto unVoto = new Voto(unCandidato, unaProvincia);
+		Voto otroVoto = new Voto(otroCandidato, unaProvincia);
 
-		unCandidato.agregarVoto();
-		unCandidato.agregarVoto();
-		otroCandidato.agregarVoto();
+		unCandidato.agregarVoto(unVoto);
+		unCandidato.agregarVoto(unVoto);
+		otroCandidato.agregarVoto(otroVoto);
 		unPartido.agregarCandidato(unCandidato);
 		otroPartido.agregarCandidato(otroCandidato);
 		unaProvincia.agregarPartido(otroPartido);

@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,6 +48,29 @@ public class Provincia {
 		}
 
 		return cantidadDeVotos;
+	}
+
+	public void agregarVoto(Voto unVoto) {
+		for (Partido partidoActual : partidos) {
+			if (partidoActual.getCandidatos().contains(unVoto.getCandidato())) {
+				partidoActual.agregarVoto(unVoto);
+			}
+		}
+
+	}
+
+	public HashMap<Candidato, Integer> getCandidatosYSusVotos() {
+		HashMap<Candidato, Integer> resultadoProvincial = new HashMap<Candidato, Integer>();
+		Set<Candidato> candidatos = new HashSet<Candidato>();
+		
+		for (Partido partidoActual : partidos) {
+			candidatos = partidoActual.getCandidatos();
+			for (Candidato candidatoActual : candidatos) {
+				int cantidadDeVotos = candidatoActual.getCantidadDeVotosObtenidos();
+				resultadoProvincial.put(candidatoActual, cantidadDeVotos);
+			}
+		}
+		return resultadoProvincial;
 	}
 
 }
