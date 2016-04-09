@@ -13,5 +13,15 @@ public class BookStoreTest {
 
 		Assert.assertEquals("PanamaPapers", name);
 	}
+	
+	@Test
+	public void createBookStore() {
+		BookStore myBookStore = new BookStore("PanamaPapers");
+		Product book = new Book("Jobs");
+		
+		myBookStore.addProducts(book);
+
+		Assert.assertEquals(1, myBookStore.getListOfProducts().size());
+	}
 
 }

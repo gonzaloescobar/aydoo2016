@@ -21,4 +21,8 @@ public class BookStore {
 		this.listOfProducts.add(book);
 	}
 
+	public List<Product> getListOfProducts() {
+		return this.listOfProducts;
+	}
+
 }
