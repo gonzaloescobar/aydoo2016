@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Product {
+public abstract class Product {
 	private String name;
 	private double price;
 
