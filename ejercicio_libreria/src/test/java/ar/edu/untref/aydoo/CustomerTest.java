@@ -13,5 +13,15 @@ public class CustomerTest {
 
 		Assert.assertEquals("Gonza", name);
 	}
+	
+	@Test
+	public void createCustomerAddAddress() {
+		Customer customer = new Customer("Gonza");
+
+		customer.setAddress("calle falsa 123");
+		String address = customer.getAddress();
+
+		Assert.assertEquals("calle falsa 123", address);
+	}
 
 }
