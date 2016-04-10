@@ -1,21 +1,13 @@
 package ar.edu.untref.aydoo;
 
-import java.util.Date;
+import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Buy {
-	private Date date;
+	private Month month;
 	private double amount;
 	private List<Product> listOfProducts = new LinkedList<Product>();
-
-	public Date getData() {
-		return date;
-	}
-
-	public void setData(Date date) {
-		this.date = date;
-	}
 
 	public double getAmount() {
 		return amount;
@@ -31,5 +23,13 @@ public class Buy {
 
 	public void addProduct(Product product) {
 		this.listOfProducts.add(product);
+	}
+
+	public Month getMonth() {
+		return month;
+	}
+
+	public void setMonth(Month month) {
+		this.month = month;
 	}
 }
