@@ -23,5 +23,29 @@ public class CustomerTest {
 
 		Assert.assertEquals("calle falsa 123", address);
 	}
+	
+	@Test
+	public void createCustomerWithBuySize() {
+		Customer customer = new Customer("Gonza");
+		Product book = new Book("The Hobbit");
+		Buy buy = new Buy();
+		
+		buy.addProduct(book);
+		customer.addBuy(buy);
+
+		Assert.assertEquals(1, customer.getListOfBuys().size());
+	}
+	
+	@Test
+	public void createCustomerWithBuy() {
+		Customer customer = new Customer("Gonza");
+		Product book = new Book("The Hobbit");
+		Buy buy = new Buy();
+		
+		buy.addProduct(book);
+		customer.addBuy(buy);
+
+		Assert.assertEquals(true, customer.getListOfBuys().contains(buy));
+	}
 
 }
