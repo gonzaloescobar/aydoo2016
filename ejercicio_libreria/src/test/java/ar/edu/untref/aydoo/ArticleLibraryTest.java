@@ -7,16 +7,16 @@ public class ArticleLibraryTest {
 
 	@Test
 	public void articleLibraryName() {
-		Product article = new ArticleLibrary("pencil");
+		Product article = new ArticleLibrary("pen");
 
 		String name = article.getName();
 
-		Assert.assertEquals("pencil", name);
+		Assert.assertEquals("pen", name);
 	}
 	
 	@Test
 	public void articleLibraryGetPrice() {
-		Product article = new ArticleLibrary("pencil");
+		Product article = new ArticleLibrary("pen");
 		
 		article.setPrice(5);
 		double price = article.getPrice();

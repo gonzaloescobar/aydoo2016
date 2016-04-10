@@ -2,18 +2,18 @@ package ar.edu.untref.aydoo;
 
 public class Magazine extends Product {
 	
-	private String frequency;
+	private Frequency frequency;
 
-	public Magazine(String name, String frequency) {
+	public Magazine(String name, Frequency frequency) {
 		this.setName(name);
 		this.setFrequency(frequency);
 	}
 
-	public String getFrequency() {
+	public Frequency getFrequency() {
 		return frequency;
 	}
 
-	public void setFrequency(String frequency) {
+	public void setFrequency(Frequency frequency) {
 		this.frequency = frequency;
 	}
 

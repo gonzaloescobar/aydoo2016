@@ -27,7 +27,7 @@ public class BookStoreTest {
 	@Test
 	public void createBookStoreWithMagazine() {
 		BookStore myBookStore = new BookStore("PanamaPapers");
-		Product magazine = new Magazine("El grafico", "monthly");
+		Product magazine = new Magazine("El grafico", Frequency.MONTHLY);
 		
 		myBookStore.addProducts(magazine);
 

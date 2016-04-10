@@ -7,7 +7,7 @@ public class MagazineTest {
 
 	@Test
 	public void magazineName() {
-		Product magazine = new Magazine("El Grafico", "monthly");
+		Product magazine = new Magazine("El Grafico", Frequency.MONTHLY);
 
 		String name = magazine.getName();
 
@@ -16,7 +16,7 @@ public class MagazineTest {
 	
 	@Test
 	public void magazinePrice() {
-		Product magazine = new Magazine("El Grafico", "monthly");
+		Product magazine = new Magazine("El Grafico", Frequency.MONTHLY);
 		
 		magazine.setPrice(30);
 		double price = magazine.getPrice();
@@ -26,11 +26,11 @@ public class MagazineTest {
 	
 	@Test
 	public void magazineFrequency() {
-		Magazine magazine = new Magazine("El Grafico", "monthly");
+		Magazine magazine = new Magazine("El Grafico", Frequency.MONTHLY);
 	
-		String frequency = magazine.getFrequency();
+		Frequency frequency = magazine.getFrequency();
 
-		Assert.assertEquals("monthly", frequency);
+		Assert.assertEquals(Frequency.MONTHLY, frequency);
 	}
 
 }
