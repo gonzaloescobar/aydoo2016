@@ -21,7 +21,7 @@ public class BookTest {
 		book.setPrice(50);
 		double price = book.getPrice();
 
-		Assert.assertEquals(50, price, 0.1);
+		Assert.assertEquals(50, price, 0.01);
 	}
 
 }
