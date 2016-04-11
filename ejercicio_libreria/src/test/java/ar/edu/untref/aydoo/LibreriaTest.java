@@ -58,5 +58,30 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(92.1, resultado,0.01);
 	}
+	
+	@Test
+	public void calcularMontoACobrarMariaConSuscripcionAnual() {
+		Libreria libreria = new Libreria("PanamaPapers");
+		Revista unaRevista = new Revista("Barcelona", Frecuencia.QUINCENAL);
+		Revista diario = new Revista("Pagina12", Frecuencia.NULA);
+		Cliente clienteMaria = new Cliente("Maria");
+		Compra compra = new Compra();
+		SuscripcionAnual suscripcionRevista = new SuscripcionAnual();
+
+		
+		unaRevista.setPrecio(20);
+		diario.setPrecio(12);
+		suscripcionRevista.agregarProducto(unaRevista);
+		compra.agregarProducto(suscripcionRevista);
+		compra.agregarProducto(diario);
+		compra.setMes(Mes.ENERO);
+		clienteMaria.agregarCompra(compra);
+		libreria.agregarCliente(clienteMaria);
+		double resultado = libreria.calcularMontoACobrar(Mes.ENERO, clienteMaria);
+		
+		Assert.assertEquals(44, resultado,0.01);
+	}
+	
+	
 
 }
