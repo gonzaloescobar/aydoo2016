@@ -4,11 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Suscripcion extends Producto {
-	private List<Producto> productos = new LinkedList<Producto>();
-	double descuento = 20;
+	private List<Producto> productos;
 
 	public Suscripcion() {
-
+		productos = new LinkedList<Producto>();
 	}
 
 	public void agregarProducto(Producto producto) {
@@ -18,27 +17,32 @@ public class Suscripcion extends Producto {
 	public double getPrecio() {
 		double precio = 0;
 		Frecuencia frecuencia = Frecuencia.NULA;
+
 		for (Producto productoActual : productos) {
 			frecuencia = ((Revista) productoActual).getFrecuencia();
+
 			switch (frecuencia) {
 			case DIARIA:
-				precio = productoActual.getPrecio() * 30;
+				precio = precio + productoActual.getPrecio() * 30;
 				break;
 			case SEMANAL:
-				precio = productoActual.getPrecio() * 7;
+				precio = precio + productoActual.getPrecio() * 4;
 				break;
 			case QUINCENAL:
-				precio = productoActual.getPrecio() * 2;
+				precio = precio + productoActual.getPrecio() * 2;
 				break;
 			case MENSUAL:
-				precio = productoActual.getPrecio() * 1;
+				precio = precio + productoActual.getPrecio() * 1;
 				break;
 			default:
-				precio = productoActual.getPrecio() * 1;
+				precio = precio + productoActual.getPrecio() * 1;
 				break;
-
 			}
 		}
 		return precio;
+	}
+
+	public List<Producto> getListaDeProductos() {
+		return this.productos;
 	}
 }

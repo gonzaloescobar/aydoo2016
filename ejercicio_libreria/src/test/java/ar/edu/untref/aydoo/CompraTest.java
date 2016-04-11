@@ -7,7 +7,7 @@ public class CompraTest {
 
 	@Test
 	public void agregarProductoAUnaCompra() {
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.ENERO);
 		Producto libro = new Libro("El Hobbit");
 
 		compra.agregarProducto(libro);
@@ -17,19 +17,19 @@ public class CompraTest {
 
 	@Test
 	public void getMesDeCompra() {
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.AGOSTO);
 		Producto libro = new Libro("El Hobbit");
-		Mes mes = Mes.AGOSTO;
+		Mes mes = Mes.ABRIL;
 
 		compra.setMes(mes);
 		compra.agregarProducto(libro);
 
-		Assert.assertEquals(Mes.AGOSTO, compra.getMes());
+		Assert.assertEquals(Mes.ABRIL, compra.getMes());
 	}
 
 	@Test
 	public void cantidadDeProductos() {
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.ENERO);
 		Producto libro = new Libro("El Hobbit");
 
 		compra.agregarProducto(libro);

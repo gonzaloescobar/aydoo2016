@@ -9,6 +9,10 @@ public class Compra {
 	private List<Producto> listaDeProductos = new LinkedList<Producto>();
 	
 
+	public Compra(Mes mes) {
+		this.mes = mes;
+	}
+
 	public double getCantidad() {
 		return cantidad;
 	}

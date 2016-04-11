@@ -41,7 +41,7 @@ public class LibreriaTest {
 		Libro unLibro = new Libro("The Hobbit");
 		ArticuloDeLibreria articulo = new ArticuloDeLibreria("lapicera");
 		Cliente clienteJuan = new Cliente("Juan");
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.AGOSTO);
 
 		
 		unaRevista.setPrecio(30);
@@ -51,7 +51,6 @@ public class LibreriaTest {
 		compra.agregarProducto(articulo);
 		compra.agregarProducto(unLibro);
 		compra.agregarProducto(unaRevista);
-		compra.setMes(Mes.AGOSTO);
 		clienteJuan.agregarCompra(compra);
 		libreria.agregarCliente(clienteJuan);
 		double resultado = libreria.calcularMontoACobrar(Mes.AGOSTO, clienteJuan);
@@ -65,7 +64,7 @@ public class LibreriaTest {
 		Revista unaRevista = new Revista("Barcelona", Frecuencia.QUINCENAL);
 		Revista diario = new Revista("Pagina12", Frecuencia.NULA);
 		Cliente clienteMaria = new Cliente("Maria");
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.ENERO);
 		SuscripcionAnual suscripcionRevista = new SuscripcionAnual();
 
 		
@@ -74,12 +73,33 @@ public class LibreriaTest {
 		suscripcionRevista.agregarProducto(unaRevista);
 		compra.agregarProducto(suscripcionRevista);
 		compra.agregarProducto(diario);
-		compra.setMes(Mes.ENERO);
 		clienteMaria.agregarCompra(compra);
 		libreria.agregarCliente(clienteMaria);
 		double resultado = libreria.calcularMontoACobrar(Mes.ENERO, clienteMaria);
 		
 		Assert.assertEquals(44, resultado,0.01);
+	}
+	
+	@Test
+	public void calcularMontoACobrarMariaSinSuscripcionAnual() {
+		Libreria libreria = new Libreria("PanamaPapers");
+		Revista unaRevista = new Revista("Barcelona", Frecuencia.QUINCENAL);
+		Revista diario = new Revista("Pagina12", Frecuencia.NULA);
+		Cliente clienteMaria = new Cliente("Maria");
+		Compra compra = new Compra(Mes.ENERO);
+		Suscripcion suscripcionRevista = new Suscripcion();
+
+		
+		unaRevista.setPrecio(20);
+		diario.setPrecio(12);
+		suscripcionRevista.agregarProducto(unaRevista);
+		compra.agregarProducto(suscripcionRevista);
+		compra.agregarProducto(diario);
+		clienteMaria.agregarCompra(compra);
+		libreria.agregarCliente(clienteMaria);
+		double resultado = libreria.calcularMontoACobrar(Mes.ENERO, clienteMaria);
+		
+		Assert.assertEquals(52, resultado,0.01);
 	}
 	
 	

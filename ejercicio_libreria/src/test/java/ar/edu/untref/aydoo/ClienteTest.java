@@ -28,7 +28,7 @@ public class ClienteTest {
 	public void clienteConCompraYQueExista() {
 		Cliente cliente = new Cliente("Gonza");
 		Producto libro = new Libro("El Hobbit");
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.ENERO);
 		
 		compra.agregarProducto(libro);
 		cliente.agregarCompra(compra);
@@ -40,7 +40,7 @@ public class ClienteTest {
 	public void clienteConCompra() {
 		Cliente cliente = new Cliente("Gonza");
 		Producto libro = new Libro("El Hobbit");
-		Compra compra = new Compra();
+		Compra compra = new Compra(Mes.ENERO);
 		
 		compra.agregarProducto(libro);
 		cliente.agregarCompra(compra);
