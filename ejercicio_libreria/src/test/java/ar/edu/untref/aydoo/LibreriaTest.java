@@ -102,6 +102,44 @@ public class LibreriaTest {
 		Assert.assertEquals(52, resultado,0.01);
 	}
 	
+	@Test
+	public void calcularMontoACobrarMariaConSuscripcionAnualDePeriodico() {
+		Libreria libreria = new Libreria("PanamaPapers");
+		Revista diario = new Revista("Pagina12", Frecuencia.DIARIA);
+		Cliente clienteMaria = new Cliente("Maria");
+		Compra compra = new Compra(Mes.ENERO);
+		SuscripcionAnual suscripcionPeriodico = new SuscripcionAnual();
+
+		
+		diario.setPrecio(12);
+		suscripcionPeriodico.agregarProducto(diario);
+		compra.agregarProducto(suscripcionPeriodico);
+		clienteMaria.agregarCompra(compra);
+		libreria.agregarCliente(clienteMaria);
+		double resultado = libreria.calcularMontoACobrar(Mes.ENERO, clienteMaria);
+		
+		Assert.assertEquals(288, resultado,0.01);
+	}
+	
+	@Test
+	public void calcularMontoACobrarMariaSinSuscripcionAnualDePeriodico() {
+		Libreria libreria = new Libreria("PanamaPapers");
+		Revista diario = new Revista("Pagina12", Frecuencia.DIARIA);
+		Cliente clienteMaria = new Cliente("Maria");
+		Compra compra = new Compra(Mes.ENERO);
+		Suscripcion suscripcionPeriodico = new Suscripcion();
+
+		
+		diario.setPrecio(12);
+		suscripcionPeriodico.agregarProducto(diario);
+		compra.agregarProducto(suscripcionPeriodico);
+		clienteMaria.agregarCompra(compra);
+		libreria.agregarCliente(clienteMaria);
+		double resultado = libreria.calcularMontoACobrar(Mes.ENERO, clienteMaria);
+		
+		Assert.assertEquals(360, resultado,0.01);
+	}
+	
 	
 
 }

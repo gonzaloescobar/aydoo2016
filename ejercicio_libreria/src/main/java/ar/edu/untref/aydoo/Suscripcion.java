@@ -19,7 +19,13 @@ public class Suscripcion extends Producto {
 		Frecuencia frecuencia = Frecuencia.NULA;
 
 		for (Producto productoActual : productos) {
-			frecuencia = ((Revista) productoActual).getFrecuencia();
+			
+			if(productoActual instanceof Revista){				
+				frecuencia = ((Revista) productoActual).getFrecuencia();
+			}else if(productoActual instanceof Periodico){
+				frecuencia = ((Periodico) productoActual).getFrecuencia();
+			}
+			
 
 			switch (frecuencia) {
 			case DIARIA:
