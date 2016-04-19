@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 public class ControladorDeEntrada {
 	private int numero = 0;
 	private String formato = "pretty";
-	private String output = "";
+	private String nombreDeArchivo = "";
 	private String orden = "";
 	private String argumentos[];
 
@@ -20,7 +20,7 @@ public class ControladorDeEntrada {
 			} else if (argumentoActual.startsWith("--sort:")) {
 				this.orden = argumentoActual.substring(7);
 			} else if (argumentoActual.startsWith("--output-file=")) {
-				this.output = argumentoActual.substring(14);
+				this.nombreDeArchivo = argumentoActual.substring(14);
 			}
 
 		}
@@ -31,7 +31,7 @@ public class ControladorDeEntrada {
 	}
 
 	public String getNombreDeArchivo() {
-		return output;
+		return nombreDeArchivo;
 	}
 
 	public String getOrden() {

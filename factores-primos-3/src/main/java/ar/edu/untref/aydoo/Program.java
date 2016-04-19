@@ -10,6 +10,7 @@ public class Program {
 		ControladorDeSalida salida = new ControladorDeSalida();
 		entrada.analizarArgumentos();
 		String resultadoFormateado = salida.formatearResultado(entrada.getNumero(), entrada.getFormato(), numeroFactorizado);
+		
 		if(entrada.getNombreDeArchivo() != ""){			
 			salida.imprimirEnArchivo(entrada.getNombreDeArchivo(), resultadoFormateado);
 		}else{			
