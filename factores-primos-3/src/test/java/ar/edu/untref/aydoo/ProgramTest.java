@@ -115,14 +115,14 @@ public class ProgramTest {
 	public void pruebaFactoresPrimosFormatoPrettyImpresoEnArchivo() throws IOException {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
+		FileReader lectorDeArchivo = new FileReader("salida.txt");
+		BufferedReader bufferedReader = new BufferedReader(lectorDeArchivo);
 
 		String[] argumento = { "90", "--format=pretty", "--output-file=salida.txt" };
 		Program.main(argumento);
 
 		String cadena = "";
 		String resultado = "";
-		FileReader lectorDeArchivo = new FileReader("salida.txt");
-		BufferedReader bufferedReader = new BufferedReader(lectorDeArchivo);
 		while ((cadena = bufferedReader.readLine()) != null) {
 			resultado = resultado + cadena;
 		}
@@ -136,18 +136,56 @@ public class ProgramTest {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 
-		String[] argumento = { "90", "--format=PRETTY" };
+		String[] argumento = { "90", "--format=PRETTY", "--output-file=salida.txt"};
 		Program.main(argumento);
-		String cadena = "";
-		String resultado = "";
 		FileReader lectorDeArchivo = new FileReader("salida.txt");
 		BufferedReader bufferedReader = new BufferedReader(lectorDeArchivo);
+		String cadena = "";
+		String resultado = "";
 		while ((cadena = bufferedReader.readLine()) != null) {
 			resultado = resultado + cadena;
 		}
 		bufferedReader.close();
 
-		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", outContent.toString().substring(0, 28));
+		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", resultado);
+	}
+	
+	@Test
+	public void pruebaFactoresPrimos90FormatoQuietImpresoEnArchivo() throws IOException {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		FileReader lectorDeArchivo = new FileReader("salida.txt");
+		BufferedReader bufferedReader = new BufferedReader(lectorDeArchivo);
+
+		String[] argumento = { "90", "--format=quiet", "--output-file=salida.txt"};
+		Program.main(argumento);
+		String cadena = "";
+		String resultado = "";
+		while ((cadena = bufferedReader.readLine()) != null) {
+			resultado = resultado  + cadena + "\n";
+		}
+		bufferedReader.close();
+
+		Assert.assertEquals("5\n3\n3\n2\n", resultado);
+	}
+	
+	@Test
+	public void pruebaFactoresPrimosImpresoEnArchivoConParametrosEnOrdenInverso() throws IOException {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		FileReader lectorDeArchivo = new FileReader("salida.txt");
+		BufferedReader bufferedReader = new BufferedReader(lectorDeArchivo);
+
+		String[] argumento = { "90", "--output-file=salida.txt", "--format=quiet"};
+		Program.main(argumento);
+		String cadena = "";
+		String resultado = "";
+		while ((cadena = bufferedReader.readLine()) != null) {
+			resultado = resultado  + cadena + "\n";
+		}
+		bufferedReader.close();
+
+		Assert.assertEquals("5\n3\n3\n2\n", resultado);
 	}
 
 }
