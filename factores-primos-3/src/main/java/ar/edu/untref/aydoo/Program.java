@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class Program {
 
-	public final void main(String args[]) {
+	public static void main(String args[]) {
 
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		ControladorDeEntrada entrada = new ControladorDeEntrada(args);
