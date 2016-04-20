@@ -8,14 +8,14 @@ import java.io.PrintWriter;
 
 public class ControladorDeSalida {
 
-	public String formatearResultado(int numero, String formato, String numeroFactorizado) {
+	public String formatearResultado(int numero, String formato, String numeroFactorizado, String orden) {
 		String resultado = "";
 		switch (formato.toLowerCase()) {
 		case "pretty":
-			resultado = formatearPretty(numeroFactorizado, numero);
+			resultado = formatearPretty(numeroFactorizado, numero, orden);
 			break;
 		case "quiet":
-			resultado = formatearQuiet(numeroFactorizado);
+			resultado = formatearQuiet(numeroFactorizado, orden);
 			break;
 		default:
 			resultado = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
@@ -24,22 +24,40 @@ public class ControladorDeSalida {
 		return resultado;
 	}
 
-	private static String formatearPretty(String resultado, int numero) {
+	private static String formatearPretty(String resultado, int numero, String orden) {
+
+		if (orden.equals("des")) {
+			resultado = invertirPretty(resultado);
+		}
 		return "Factores primos " + numero + ": " + resultado;
 	}
 
-	private static String formatearQuiet(String resultado) {
-		resultado = invertir(resultado);
-		return resultado = resultado.replace(" ", "\n");
+	private static String formatearQuiet(String resultado, String orden) {
+		if(orden.equals("des") || orden.equals("")){
+			resultado = invertir(resultado);
+		}		
+		resultado = resultado.replace(" ", "\n");
+			
+		return resultado;
+	}
+	
+    private static String invertir(String palabra){
+		String resultado = "";
+		
+		for(int i = palabra.length()-2; i >= 0; i--){
+			resultado = resultado + palabra.substring(i,i+1);
+		}	
+		return resultado;
 	}
 
-	private static String invertir(String palabra) {
-		String resultado = "";
+	private static String invertirPretty(String palabra) {
+		String palabraInvertida = "";
 
 		for (int i = palabra.length() - 2; i >= 0; i--) {
-			resultado = resultado + palabra.substring(i, i + 1);
+			palabraInvertida = palabraInvertida + palabra.substring(i, i + 1);
 		}
-		return resultado;
+		
+		return palabraInvertida;
 	}
 
 	public void imprimirEnArchivo(String nombreArchivo, String resultado) {

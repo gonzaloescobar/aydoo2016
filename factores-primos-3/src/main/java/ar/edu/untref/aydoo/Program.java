@@ -6,11 +6,10 @@ public class Program {
 
 		FactoresPrimos factoresPrimos = new FactoresPrimos();
 		ControladorDeEntrada entrada = new ControladorDeEntrada(args);
+		entrada.analizarArgumentos();
 		String numeroFactorizado = factoresPrimos.descomponerFactoresPrimos(entrada.getNumero());
 		ControladorDeSalida salida = new ControladorDeSalida();
-		entrada.analizarArgumentos();
-		String resultadoFormateado = salida.formatearResultado(entrada.getNumero(), entrada.getFormato(), numeroFactorizado);
-		
+		String resultadoFormateado = salida.formatearResultado(entrada.getNumero(), entrada.getFormato(), numeroFactorizado, entrada.getOrden());
 		if(entrada.getNombreDeArchivo() != ""){			
 			salida.imprimirEnArchivo(entrada.getNombreDeArchivo(), resultadoFormateado);
 		}else{			

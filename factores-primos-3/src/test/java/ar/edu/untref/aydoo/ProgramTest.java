@@ -187,5 +187,51 @@ public class ProgramTest {
 
 		Assert.assertEquals("5\n3\n3\n2\n", resultado);
 	}
+	
+	@Test
+	public void pruebaFactoresPrimos90FormatoQuietEnOrdenAscendente() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+
+		String[] argumento = { "90", "--format=quiet", "--sort:asc"};
+		Program.main(argumento);
+
+		Assert.assertEquals("2\n3\n3\n5", outContent.toString().substring(0, 7));
+	}
+	
+	@Test
+	public void pruebaFactoresPrimos90FormatoQuietEnOrdenDescendente() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+
+		String[] argumento = { "90", "--format=quiet", "--sort:des"};
+		Program.main(argumento);
+
+		Assert.assertEquals("5\n3\n3\n2", outContent.toString().substring(0, 7));
+	}
+	
+	@Test
+	public void factoresPrimos90FormatoPrettyAscendente() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+
+		String[] argumento = { "90", "--format=pretty", "--sort:asc" };
+		Program.main(argumento);
+
+		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", outContent.toString().substring(0, 28));
+	}
+	@Test
+	public void factoresPrimos360FormatoPrettyOrdenDescendente() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		
+		String[] argumento = { "360", "--format=pretty", "--sort:des" };
+		Program.main(argumento);
+		
+
+		Assert.assertEquals("Factores primos 360: 5 3 3 2 2 2", outContent.toString().substring(0, 32));
+	}
+	
+
 
 }
