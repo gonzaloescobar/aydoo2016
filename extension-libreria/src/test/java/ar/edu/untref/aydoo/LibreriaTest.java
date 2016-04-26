@@ -1,11 +1,11 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
-@SuppressWarnings("deprecation")
+
 public class LibreriaTest {
 
 	private Libreria miLibreria = Libreria.getInstance();
@@ -51,7 +51,7 @@ public class LibreriaTest {
 		this.juan.efectuarCompra(primerLapicera);
 		this.juan.efectuarCompra(segundaLapicera);
 		this.juan.efectuarCompra(elGraficoSinSuscripcion);
-		Assert.assertEquals(92.1, this.miLibreria.calcularMontoACobrar(agosto,this.juan));
+		Assert.assertEquals(92.1, this.miLibreria.calcularMontoACobrar(agosto,this.juan), 0.0);
 	}
 
 	@Test
@@ -61,7 +61,7 @@ public class LibreriaTest {
 		Suscripcion suscripcionBarcelona = new Suscripcion(this.barcelona);
 		this.maria.efectuarCompra(compraEjemplarPagina12);
 		this.maria.suscribirseAnualmente(suscripcionBarcelona);
-		Assert.assertEquals(44.0, this.miLibreria.calcularMontoACobrar(enero,this.maria));
+		Assert.assertEquals(44.0, this.miLibreria.calcularMontoACobrar(enero,this.maria), 0.0);
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class LibreriaTest {
 		this.juan.efectuarCompra(elGraficoSinSuscripcion);
 		this.juan.efectuarCompra(compraHobbitEnMarzo);
 		this.juan.efectuarCompra(compraClarinSinSuscripcion);
-		Assert.assertEquals(63.0, this.miLibreria.calcularMontoACobrar(marzo,this.juan));
+		Assert.assertEquals(63.0, this.miLibreria.calcularMontoACobrar(marzo,this.juan), 0.0);
 	}
 
 	@Test
@@ -101,7 +101,7 @@ public class LibreriaTest {
 		this.maria.efectuarCompra(elGraficoSinSuscripcion);
 		this.maria.efectuarCompra(compraHobbitEnMarzo); //en marzo
 		this.maria.efectuarCompra(compraClarinSinSuscripcion);//en marzo
-		Assert.assertEquals(351.0, this.miLibreria.calcularMontoACobrar(marzo,this.maria));
+		Assert.assertEquals(351.0, this.miLibreria.calcularMontoACobrar(marzo,this.maria), 0.0);
 	}
 
 	@Test
@@ -126,7 +126,7 @@ public class LibreriaTest {
 		this.maria.efectuarCompra(segundaLapicera);//agosto
 		this.maria.efectuarCompra(compraHobbitEnMarzo); //en marzo
 		this.maria.efectuarCompra(compraClarinSinSuscripcionEnMarzo);//en marzo
-		Assert.assertEquals(419.1, this.miLibreria.calcularMontoACobrar(agosto,this.maria));
+		Assert.assertEquals(419.1, this.miLibreria.calcularMontoACobrar(agosto,this.maria), 0.0);
 	}
 
 	@Test
@@ -138,4 +138,5 @@ public class LibreriaTest {
 	public void laLibreriaPuedeObtenerLaDireccionDeUnCliente(){
 		Assert.assertEquals("Moreno 890", this.miLibreria.getDireccionDeUnCliente(this.juan));
 	}
+	
 }
