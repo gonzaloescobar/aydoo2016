@@ -19,6 +19,7 @@ public class LibreriaTest {
 	private Producto alquilerDiario;
 	private Producto alquilerDiario2;
 	private Producto alquilerMensual;
+	private Producto alquilerCuatrimestral;
 
 	@Before
 	public void inicializar() {
@@ -180,6 +181,31 @@ public class LibreriaTest {
 		Mes agosto = new Mes("Agosto");
 		this.alquilerMensual = new AlquilerMensual(this.elHobbit2, 9);
 		Compra alquilerHobbit = new Compra(agosto, alquilerMensual);
+		this.juan.efectuarCompra(alquilerHobbit);
+	}
+	
+	@Test
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroUnCuatrimestre() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerCuatrimestral = new AlquilerCuatrimestral(this.elHobbit2, 1);
+		Compra alquilerHobbit = new Compra(agosto, alquilerCuatrimestral);
+		this.juan.efectuarCompra(alquilerHobbit);
+		Assert.assertEquals(720, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
+	}
+	
+	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeCuatrimestresMenorAlPermitido() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerCuatrimestral = new AlquilerCuatrimestral(this.elHobbit2, 0);
+		Compra alquilerHobbit = new Compra(agosto, alquilerCuatrimestral);
+		this.juan.efectuarCompra(alquilerHobbit);
+	}
+	
+	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeCuatrimestresMayorAlPermitido() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerCuatrimestral = new AlquilerCuatrimestral(this.elHobbit2, 9);
+		Compra alquilerHobbit = new Compra(agosto, alquilerCuatrimestral);
 		this.juan.efectuarCompra(alquilerHobbit);
 	}
 
