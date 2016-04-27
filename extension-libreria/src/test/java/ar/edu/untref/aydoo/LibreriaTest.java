@@ -12,10 +12,12 @@ public class LibreriaTest {
 	private ProductoSuscriptible barcelona;
 	private ProductoSuscriptible elGrafico;
 	private Producto elHobbit;
+	private Producto elHobbit2;
 	private ArticuloDeLibreria lapicera;
 	private ProductoSuscriptible pagina12;
 	private ProductoSuscriptible clarin;
 	private Producto alquilerDiario;
+	private Producto alquilerDiario2;
 
 	@Before
 	public void inicializar() {
@@ -145,6 +147,14 @@ public class LibreriaTest {
 		Compra alquilerHobbit = new Compra(agosto, alquilerDiario);
 		this.juan.efectuarCompra(alquilerHobbit);
 		Assert.assertEquals(50, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
+	}
+	
+	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeDiasMenorAlPermitido() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerDiario2 = new AlquilerDiario(this.elHobbit2, 2);
+		Compra alquilerHobbit = new Compra(agosto, alquilerDiario2);
+		this.juan.efectuarCompra(alquilerHobbit);
 	}
 
 }
