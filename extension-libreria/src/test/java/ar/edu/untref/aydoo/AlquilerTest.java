@@ -8,7 +8,7 @@ public class AlquilerTest {
 	@Test
 	public void laLibreriaCalculaElMontoACobrarParaUnClienteQueAlquilaLibroDiariamente() {
 		Producto libro = new Libro("El Hobbit");
-		Producto alquilerHobbit = new Alquiler(libro, 5);
+		Producto alquilerHobbit = new AlquilerDiario(libro, 5);
 
 		Assert.assertEquals(50.0, alquilerHobbit.getPrecio(), 0.0);
 	}
@@ -17,13 +17,13 @@ public class AlquilerTest {
 	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
 	public void alquilerLibroPorCantidadDeDiasMenorAlPermitido() {
 		Producto libro = new Libro("El Hobbit");
-		Producto alquilerHobbit = new Alquiler(libro, 2);
+		Producto alquilerHobbit = new AlquilerDiario(libro, 2);
 	}
 
 	@SuppressWarnings("unused")
 	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
 	public void alquilerLibroPorCantidadDeDiasMayorAlPermitido() {
 		Producto libro = new Libro("El Hobbit");
-		Producto alquilerHobbit = new Alquiler(libro, 30);
+		Producto alquilerHobbit = new AlquilerDiario(libro, 30);
 	}
 }

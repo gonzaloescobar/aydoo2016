@@ -3,33 +3,49 @@ package ar.edu.untref.aydoo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Alquiler extends Producto {
-
-	private int diasAlquilados = 0;
+public abstract class Alquiler extends Producto{
+	
+	private int periodoAlquilado = 0;
 	private List<Producto> productos;
-
-	public Alquiler(Producto unProducto, int cantidadDeDias) {
+	private int periodoMinimoDeAlquiler = 0;
+	private int periodoMaximoDeAlquiler = 0;
+	
+	public Alquiler(Producto unProducto, int periodo) {
 		super("");
 		this.productos = new LinkedList<Producto>();
-		this.setDiasAlquilados(cantidadDeDias);
-		this.setPrecio(10);
-		if (cantidadDeDias > 3 && cantidadDeDias < 25) {
-			this.productos.add(unProducto);
-		} else {
-			throw new PeriodoDeAlquilerInvalidoException("La cantidad no puede ser negativa");
-		}
+		this.setPeriodoAlquilado(periodo);
 	}
 
-	public double getPrecio() {
-		return this.diasAlquilados * super.getPrecio();
+	public int getPeriodoAlquilado() {
+		return periodoAlquilado;
 	}
 
-	public int getDiasAlquilados() {
-		return diasAlquilados;
+	public void setPeriodoAlquilado(int diasAlquilados) {
+		this.periodoAlquilado = diasAlquilados;
 	}
 
-	public void setDiasAlquilados(int diasAlquilados) {
-		this.diasAlquilados = diasAlquilados;
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+
+	public int getPeriodoMinimoDeAlquiler() {
+		return periodoMinimoDeAlquiler;
+	}
+
+	public void setPeriodoMinimoDeAlquiler(int periodoMinimoDeAlquiler) {
+		this.periodoMinimoDeAlquiler = periodoMinimoDeAlquiler;
+	}
+
+	public int getPeriodoMaximoDeAlquiler() {
+		return periodoMaximoDeAlquiler;
+	}
+
+	public void setPeriodoMaximoDeAlquiler(int periodoMaximoDeAlquiler) {
+		this.periodoMaximoDeAlquiler = periodoMaximoDeAlquiler;
 	}
 
 }
