@@ -3,13 +3,13 @@ package ar.edu.untref.aydoo;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Alquiler extends Producto{
-	
+public abstract class Alquiler extends Producto {
+
 	private int periodoAlquilado = 0;
 	private List<Producto> productos;
 	private int periodoMinimoDeAlquiler = 0;
 	private int periodoMaximoDeAlquiler = 0;
-	
+
 	public Alquiler(Producto unProducto, int periodo) {
 		super("");
 		this.productos = new LinkedList<Producto>();
