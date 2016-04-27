@@ -168,6 +168,17 @@ public class LibreriaTest {
 		Assert.assertEquals(200, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
 	}
 	
+	@Test
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroMensualmenteConOtroProducto() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerMensual = new AlquilerMensual(this.elHobbit2, 1);
+		Compra alquilerHobbit = new Compra(agosto, alquilerMensual);
+		Compra primerLapicera = new Compra(agosto, this.lapicera);
+		this.juan.efectuarCompra(primerLapicera);
+		this.juan.efectuarCompra(alquilerHobbit);
+		Assert.assertEquals(206.05, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
+	}
+	
 	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
 	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeMesesMenorAlPermitido() {
 		Mes agosto = new Mes("Agosto");
@@ -207,6 +218,17 @@ public class LibreriaTest {
 		this.alquilerCuatrimestral = new AlquilerCuatrimestral(this.elHobbit2, 9);
 		Compra alquilerHobbit = new Compra(agosto, alquilerCuatrimestral);
 		this.juan.efectuarCompra(alquilerHobbit);
+	}
+	
+	@Test
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroUnCuatrimestreConOtroProducto() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerCuatrimestral = new AlquilerCuatrimestral(this.elHobbit2, 1);
+		Compra alquilerHobbit = new Compra(agosto, alquilerCuatrimestral);
+		Compra primerLapicera = new Compra(agosto, this.lapicera);
+		this.juan.efectuarCompra(alquilerHobbit);
+		this.juan.efectuarCompra(primerLapicera);
+		Assert.assertEquals(726.05, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
 	}
 
 }
