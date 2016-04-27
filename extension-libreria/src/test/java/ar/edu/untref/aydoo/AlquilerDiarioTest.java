@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class AlquilerTest {
+public class AlquilerDiarioTest {
 
 	@Test
 	public void laLibreriaCalculaElMontoACobrarParaUnClienteQueAlquilaLibroDiariamente() {

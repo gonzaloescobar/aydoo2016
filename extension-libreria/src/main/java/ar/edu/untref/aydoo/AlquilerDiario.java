@@ -7,7 +7,7 @@ public class AlquilerDiario extends Alquiler {
 		this.setPeriodoMinimoDeAlquiler(3);
 		this.setPeriodoMaximoDeAlquiler(25);
 		this.setPrecio(10);
-		if (cantidadDeDias > this.getPeriodoMinimoDeAlquiler() && cantidadDeDias < this.getPeriodoMaximoDeAlquiler()) {
+		if (cantidadDeDias >= this.getPeriodoMinimoDeAlquiler() && cantidadDeDias <= this.getPeriodoMaximoDeAlquiler()) {
 			this.getProductos().add(unProducto);
 		} else {
 			throw new PeriodoDeAlquilerInvalidoException(
