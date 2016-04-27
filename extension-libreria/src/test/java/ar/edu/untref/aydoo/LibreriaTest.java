@@ -166,5 +166,21 @@ public class LibreriaTest {
 		this.juan.efectuarCompra(alquilerHobbit);
 		Assert.assertEquals(200, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
 	}
+	
+	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeMesesMenorAlPermitido() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerMensual = new AlquilerMensual(this.elHobbit2, 0);
+		Compra alquilerHobbit = new Compra(agosto, alquilerMensual);
+		this.juan.efectuarCompra(alquilerHobbit);
+	}
+	
+	@Test(expected = PeriodoDeAlquilerInvalidoException.class)
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroPorCantidadDeMesesMayorAlPermitido() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerMensual = new AlquilerMensual(this.elHobbit2, 9);
+		Compra alquilerHobbit = new Compra(agosto, alquilerMensual);
+		this.juan.efectuarCompra(alquilerHobbit);
+	}
 
 }
