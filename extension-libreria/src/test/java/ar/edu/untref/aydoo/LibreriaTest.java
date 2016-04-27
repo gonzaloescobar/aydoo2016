@@ -18,6 +18,7 @@ public class LibreriaTest {
 	private ProductoSuscriptible clarin;
 	private Producto alquilerDiario;
 	private Producto alquilerDiario2;
+	private Producto alquilerMensual;
 
 	@Before
 	public void inicializar() {
@@ -155,6 +156,15 @@ public class LibreriaTest {
 		this.alquilerDiario2 = new AlquilerDiario(this.elHobbit2, 2);
 		Compra alquilerHobbit = new Compra(agosto, alquilerDiario2);
 		this.juan.efectuarCompra(alquilerHobbit);
+	}
+	
+	@Test
+	public void calculaElMontoACobrarParaUnClienteQueAlquilaUnLibroMensualmente() {
+		Mes agosto = new Mes("Agosto");
+		this.alquilerMensual = new AlquilerMensual(this.elHobbit2, 1);
+		Compra alquilerHobbit = new Compra(agosto, alquilerMensual);
+		this.juan.efectuarCompra(alquilerHobbit);
+		Assert.assertEquals(200, this.miLibreria.calcularMontoACobrar(agosto, this.juan), 0.0);
 	}
 
 }
