@@ -1,11 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
-@SuppressWarnings("deprecation")
 public class PeriodicoTest {
 
 	private Periodico miPeriodico;
@@ -23,7 +21,7 @@ public class PeriodicoTest {
 
 	@Test
 	public void ponerPrecioALPeriodico(){
-		Assert.assertEquals(9.80, this.miPeriodico.getPrecio());
+		Assert.assertEquals(9.80, this.miPeriodico.getPrecio(), 0.0);
 	}
 
 	@Test(expected = Exception.class)

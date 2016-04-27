@@ -1,11 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
-@SuppressWarnings("deprecation")
 public class CompraTest {
 
 	private Compra miCompraDeArticuloDeLibreria;
@@ -38,7 +36,7 @@ public class CompraTest {
 	//se le aplica IVA
 	@Test
 	public void obtenerMontoDeLaCompraDeProductoDeLibreria(){
-		Assert.assertEquals(21.175, this.miCompraDeArticuloDeLibreria.getMonto());
+		Assert.assertEquals(21.175, this.miCompraDeArticuloDeLibreria.getMonto(), 0.0);
 	}
 
 	@Test
@@ -48,12 +46,12 @@ public class CompraTest {
 
 	@Test
 	public void obtenerMontoDeLaCompraDeUnLibro(){
-		Assert.assertEquals(100.0, this.miCompraDeLibro.getMonto());
+		Assert.assertEquals(100.0, this.miCompraDeLibro.getMonto(), 0.0);
 	}
 
 	@Test
 	public void obtenerMontoDeUnProductoSuscriptible(){
-		Assert.assertEquals(15.55, this.miCompraDeProductoSuscriptible.getMonto());
+		Assert.assertEquals(15.55, this.miCompraDeProductoSuscriptible.getMonto(), 0.0);
 	}
 
 }

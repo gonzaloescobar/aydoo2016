@@ -1,11 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
-@SuppressWarnings("deprecation")
 public class SuscripcionTest {
 
 	Suscripcion suscripcionAElGrafico;

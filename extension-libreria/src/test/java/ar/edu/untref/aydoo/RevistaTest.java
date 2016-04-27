@@ -1,11 +1,10 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
-@SuppressWarnings("deprecation")
 public class RevistaTest {
 
 	private Revista miRevista;
@@ -23,7 +22,7 @@ public class RevistaTest {
 
 	@Test
 	public void ponerPrecioALaRevista(){
-		Assert.assertEquals(15.99, this.miRevista.getPrecio());
+		Assert.assertEquals(15.99, this.miRevista.getPrecio(), 0.0);
 	}
 
 	@Test

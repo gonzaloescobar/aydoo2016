@@ -1,10 +1,8 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
-@SuppressWarnings("deprecation")
 public class LibroTest {
 
 	@Test
@@ -17,7 +15,7 @@ public class LibroTest {
 	public void ponerPrecioAlLibro(){
 		Libro miLibro = new Libro("El arte de la guerra");
 		miLibro.setPrecio(25.55);
-		Assert.assertEquals(25.55, miLibro.getPrecio());
+		Assert.assertEquals(25.55, miLibro.getPrecio(), 0.0);
 	}
 
 	@Test(expected = Exception.class)  

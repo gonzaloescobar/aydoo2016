@@ -1,11 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
-@SuppressWarnings("deprecation")
 public class ClienteTest {
 
 	Cliente miCliente;
@@ -13,39 +11,39 @@ public class ClienteTest {
 	ProductoSuscriptible revistaViva;
 
 	@Before
-	public void inicializar(){
+	public void inicializar() {
 		this.miCliente = new Cliente("Pablo", "Calle Falsa 123, Springfield");
 		this.revistaViva = new Revista("VIVA");
 		this.suscripcionARevistaViva = new Suscripcion(this.revistaViva);
 	}
 
 	@Test
-	public void unClienteSeCreaConUnNombre(){
+	public void unClienteSeCreaConUnNombre() {
 		Assert.assertEquals("Pablo", this.miCliente.getNombre());
 	}
 
 	@Test
-	public void unClienteSeCreaConUnaDireccion(){
+	public void unClienteSeCreaConUnaDireccion() {
 		Assert.assertEquals("Calle Falsa 123, Springfield", this.miCliente.getDireccion());
 	}
-	
+
 	@Test
-	public void unClienteSeSuscribeParaUnDeterminadoMes(){
+	public void unClienteSeSuscribeParaUnDeterminadoMes() {
 		Mes octubre = new Mes("Octubre");
 		this.miCliente.suscribirseEnUnMes(octubre, this.suscripcionARevistaViva);
 		Assert.assertEquals(true, this.miCliente.getRegistroDeSuscripciones().contains(this.suscripcionARevistaViva));
 		Assert.assertEquals(octubre, this.suscripcionARevistaViva.getMes());
 	}
-	
+
 	@Test
-	public void unClienteSeHaceUnaSuscripcionAnual(){
+	public void unClienteSeHaceUnaSuscripcionAnual() {
 		this.miCliente.suscribirseAnualmente(this.suscripcionARevistaViva);
 		Assert.assertEquals(true, this.miCliente.getRegistroDeSuscripciones().contains(this.suscripcionARevistaViva));
 		Assert.assertEquals(true, this.suscripcionARevistaViva.getEsAnual());
 	}
-	
+
 	@Test
-	public void unClientePuedeEfectuarUnaCompra(){
+	public void unClientePuedeEfectuarUnaCompra() {
 		Producto lapiz = new ArticuloDeLibreria("Lapiz");
 		lapiz.setPrecio(5.75);
 		Mes agosto = new Mes("Agosto");
